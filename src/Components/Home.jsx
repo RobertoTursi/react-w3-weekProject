@@ -211,8 +211,7 @@ const Home = () => {
                 >
                     {searchedSong.map((song, i) => (
                       <div key={i}>
-                      <img src={song.album.cover} alt="" />
-                      <p>{song.album.title}</p>
+                      <SingleSong song = {song} />
                   </div>
                     ))}
                     
@@ -237,7 +236,7 @@ const Home = () => {
                   //     // <img src={song.album.cover} alt="" />
                   //     // <p>{song.album.title}</p>
                   // </div>
-                  <SingleSong song={song} i={i}/>
+                  <div key={i}><SingleSong song={song}/></div>
                     ))}
                 </div>
               </div>
@@ -252,7 +251,7 @@ const Home = () => {
                   id="popSection"
                 >
                    {arrayOfSong && arrayOfSong.filter((song, i) => i > 3 && i < 8).map((song, i) => (
-                      <SingleSong song={song} i={i + 5}/>
+                       <div key={i+5}><SingleSong song={song}/></div>
                     ))}
                 </div>
               </div>
@@ -267,7 +266,7 @@ const Home = () => {
                   id="hipHopSection"
                 >
                    {arrayOfSong && arrayOfSong.filter((song, i) => i > 7 && i < 12).map((song, i) => (
-                      <SingleSong song={song} i={i+10}/>
+                       <div key={i+10}><SingleSong song={song}/></div>
                     ))}
                 </div>
               </div>

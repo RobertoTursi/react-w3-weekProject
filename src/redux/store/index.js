@@ -11,6 +11,7 @@ const initialState = {
     artistName: "",
     selectedSong: null,
     arrayOfSavedSong: [],
+    arrayOfSavedSongId: [],
     hasError: false,
     isLoading: false,
     searchedArtist: null
@@ -50,12 +51,20 @@ const mainReducer = (state = initialState, action) => {
         case "LIKED_SONG":
             return{
                 ...state,
-                arrayOfSavedSong: [...state.arrayOfSavedSong, action.payload]
+                arrayOfSavedSong: [...state.arrayOfSavedSong, action.payload],
+                arrayOfSavedSongId: [...state.arrayOfSavedSongId, action.payload.id]
             }
         case "DELETE_SONG":
             return{
                 ...state,
-                arrayOfSavedSong: state.arrayOfSavedSong.filter((song) => song !== action.payload)
+                arrayOfSavedSong: state.arrayOfSavedSong.filter((song) => song.id !== action.payload.id),
+                
+                // arrayOfSavedSongId: state.arrayOfSavedSongId.filter((song) => song.id !== action.payload.id)
+            }
+        case "DELETE_ID":
+            return{
+                ...state,
+                arrayOfSavedSongId: state.arrayOfSavedSongId.filter((id) => id !== action.payload)
             }
         case "GET_SONG_FAILED":
             return{

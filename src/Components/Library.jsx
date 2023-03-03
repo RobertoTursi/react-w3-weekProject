@@ -5,8 +5,8 @@ const Library = () => {
     const array = useSelector(state => state.arrayOfSavedSong)
 
     return(
-        array.map(song => (
-            <SingleSong song={song}/>
+        array.map((song, i) => (
+            <div key={i}><SingleSong song={song}/></div>
         ))
     )
 }
